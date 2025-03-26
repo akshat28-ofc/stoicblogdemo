@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOIC - Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="ar-overlay" class="ar-overlay" 
+    aria-hidden="true" 
+    aria-modal="true"
+    role="dialog"
+    aria-labelledby="ar-title"
+    tabindex="-1">
+ <button id="close-ar" class="close-ar" aria-label="Close AR view">
+   <i class="fas fa-times" aria-hidden="true"></i>
+ </button>
+ <h2 id="ar-title" class="sr-only">Augmented Reality View</h2>
+ <div class="ar-container" id="ar-container"></div>
+</div>
+
+    <!-- Main Navigation -->
+    <nav class="glassmorphism">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">S</span>
+                <span class="logo-text">TOIC</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#" class="active" data-section="home">Home</a>
+                <a href="#" data-section="discover">Discover</a>
+                <a href="#" data-section="timeline">Timeline</a>
+                <a href="#" data-section="topics">Topics</a>
+                <a href="#" data-section="debate">Debate</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-button">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="voice-search" class="icon-button">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button id="search-button" class="icon-button">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="user-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Search Bar (hidden by default) -->
+        <div id="search-bar" class="search-bar">
+            <input type="text" placeholder="Search or ask a question...">
+            <button id="search-submit"><i class="fas fa-arrow-right"></i></button>
+        </div>
+    </nav>
+
+    <!-- Voice Search Indicator (hidden by default) -->
+    <div id="voice-indicator" class="voice-indicator glassmorphism">
+        <div class="pulse-ring"></div>
+        <i class="fas fa-microphone"></i>
+        <p>Listening... Say something like "What's the latest in technology?"</p>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+
+        <section id="home" class="hero-section active-section">
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/hero-background.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+                </div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">Stay Ahead with <span class="highlight">Intelligent</span> News</h1>
+                <p class="hero-subtitle">AI-curated, immersive, and interactive journalism for the digital age</p>
+                
+                <div class="hero-actions">
+                    <button class="primary-button" id="explore-button">Explore Now</button>
+                    <button class="secondary-button" id="listen-button">
+                        <i class="fas fa-headphones"></i> Listen to Briefing
+                    </button>
+                </div>
+                
+                <div class="trending-tags">
+                    <span class="tag">#AIRevolution</span>
+                    <span class="tag">#ClimateSummit</span>
+                    <span class="tag">#MarsMission</span>
+                    <span class="tag">#QuantumLeap</span>
+                </div>
+            </div>
+            </section>
+
+        <!-- Personalized Feed Section -->
+        <section id="personalized-feed" class="feed-section">
+            <div class="section-header">
+                <h2>Your Personalized Feed</h2>
+                <div class="feed-controls">
+                    <button class="filter-button active" data-filter="all">All</button>
+                    <button class="filter-button" data-filter="tech">Tech</button>
+                    <button class="filter-button" data-filter="politics">Politics</button>
+                    <button class="filter-button" data-filter="science">Science</button>
+                    <button class="filter-button" data-filter="sports">Sports</button>
+                    <button id="customize-feed" class="icon-button">
+                        <i class="fas fa-sliders-h"></i> Customize
+                    </button>
+                </div>
+            </div>
+            
+            <div class="feed-container">
+                <!-- News cards will be dynamically loaded here -->
+                <div class="news-card glassmorphism tech" data-ar="true">
+                    <div class="card-header">
+                        <span class="category-badge tech">Technology</span>
+                        <div class="card-actions">
+                            <button class="card-button save"><i class="far fa-bookmark"></i></button>
+                            <button class="card-button ar-toggle"><i class="fas fa-vr-cardboard"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Quantum Computers Break Encryption Barrier</h3>
+                        <p class="summary">Researchers at MIT have demonstrated a quantum algorithm that can factor large numbers exponentially faster than classical computers, potentially breaking current encryption standards.</p>
+                        <div class="card-meta">
+                            <div class="source-info">
+                                <img src="https://logo.clearbit.com/mit.edu" alt="MIT" class="source-logo">
+                                <span class="source-name">MIT News</span>
+                                <span class="bias-meter neutral">Neutral</span>
+                            </div>
+                            <span class="time-ago">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="reactions">
+                            <button class="reaction-button"><i class="fas fa-lightbulb"></i> 124</button>
+                            <button class="reaction-button"><i class="fas fa-comment"></i> 42</button>
+                            <button class="reaction-button"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                        <button class="audio-summary"><i class="fas fa-play"></i> Listen (2 min)</button>
+                    </div>
+                </div>
+                
+                <div class="news-card glassmorphism science">
+                    <div class="card-header">
+                        <span class="category-badge science">Science</span>
+                        <div class="card-actions">
+                            <button class="card-button save"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>CRISPR Used to Reverse Aging in Mice</h3>
+                        <p class="summary">Scientists have successfully reversed aging in mice using a modified CRISPR technique, restoring youthful function to cells without altering DNA sequences.</p>
+                        <div class="card-meta">
+                            <div class="source-info">
+                                <img src="https://logo.clearbit.com/nature.com" alt="Nature" class="source-logo">
+                                <span class="source-name">Nature Journal</span>
+                                <span class="bias-meter reliable">Highly Reliable</span>
+                            </div>
+                            <span class="time-ago">5 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="reactions">
+                            <button class="reaction-button"><i class="fas fa-lightbulb"></i> 89</button>
+                            <button class="reaction-button"><i class="fas fa-comment"></i> 31</button>
+                            <button class="reaction-button"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                        <button class="audio-summary"><i class="fas fa-play"></i> Listen (1.5 min)</button>
+                    </div>
+                </div>
+                
+                <!-- More cards would be loaded here -->
+            </div>
+            
+            <div class="load-more">
+                <button id="load-more-button" class="primary-button">Load More Stories</button>
+            </div>
+        </section>
+
+        <!-- Map Explorer Section -->
+        <section id="discover" class="map-section">
+            <div class="section-header">
+                <h2>Global News Explorer</h2>
+                <p>Discover trending stories by location</p>
+            </div>
+            
+            <div class="map-container glassmorphism">
+                <div class="map" id="news-map">
+                    <!-- Map will be rendered here with JavaScript -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="World Map" class="base-map">
+                    
+                    <!-- Map markers would be added dynamically -->
+                    <div class="map-marker" style="top: 30%; left: 20%;" data-story="1">
+                        <div class="marker-pulse"></div>
+                        <div class="marker-dot"></div>
+                        <div class="marker-tooltip">
+                            <h4>US Election Updates</h4>
+                            <p>12 new stories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="map-marker" style="top: 45%; left: 50%;" data-story="2">
+                        <div class="marker-pulse"></div>
+                        <div class="marker-dot"></div>
+                        <div class="marker-tooltip">
+                            <h4>EU Climate Policy</h4>
+                            <p>8 new stories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="map-marker" style="top: 60%; left: 75%;" data-story="3">
+                        <div class="marker-pulse"></div>
+                        <div class="marker-dot"></div>
+                        <div class="marker-tooltip">
+                            <h4>Asia Tech Summit</h4>
+                            <p>15 new stories</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-stories" id="map-stories">
+                    <!-- Stories for selected location will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline View Section -->
+        <section id="timeline" class="timeline-section">
+            <div class="section-header">
+                <h2>Evolving Stories Timeline</h2>
+                <p>Follow developments as they happen</p>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Today, 14:30</div>
+                        <div class="timeline-content glassmorphism">
+                            <h3>Breaking: Major Earthquake Hits Japan</h3>
+                            <p>A 7.2 magnitude earthquake struck off the coast of Honshu, triggering tsunami warnings.</p>
+                            <div class="timeline-source">
+                                <img src="https://logo.clearbit.com/bbc.com" alt="BBC" class="source-logo">
+                                <span>BBC News</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Today, 15:45</div>
+                        <div class="timeline-content glassmorphism">
+                            <h3>Tsunami Warning Expanded</h3>
+                            <p>Authorities have expanded the tsunami warning to include coastal areas of Fukushima and Miyagi prefectures.</p>
+                            <div class="timeline-source">
+                                <img src="https://logo.clearbit.com/nhk.or.jp" alt="NHK" class="source-logo">
+                                <span>NHK World</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Today, 16:20</div>
+                        <div class="timeline-content glassmorphism">
+                            <h3>First Responders Deployed</h3>
+                            <p>Japanese Self-Defense Forces are mobilizing to affected areas as initial reports of damage come in.</p>
+                            <div class="timeline-source">
+                                <img src="https://logo.clearbit.com/reuters.com" alt="Reuters" class="source-logo">
+                                <span>Reuters</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Today, 17:00</div>
+                        <div class="timeline-content glassmorphism">
+                            <h3>International Aid Offers</h3>
+                            <p>Several countries including the US and South Korea have offered assistance to Japan.</p>
+                            <div class="timeline-source">
+                                <img src="https://logo.clearbit.com/aljazeera.com" alt="Al Jazeera" class="source-logo">
+                                <span>Al Jazeera</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic Web Section -->
+        <section id="topics" class="topics-section">
+            <div class="section-header">
+                <h2>Explore Topic Webs</h2>
+                <p>Discover interconnected stories</p>
+            </div>
+            
+            <div class="topics-container">
+                <div class="topic-web" id="topic-web">
+                    <!-- This will be generated with JavaScript -->
+                    <div class="topic-node main-topic" style="top: 50%; left: 50%;">
+                        <div class="node-content">
+                            <h4>Artificial Intelligence</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-node" style="top: 30%; left: 30%;">
+                        <div class="node-content">
+                            <h4>Ethics</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-node" style="top: 30%; left: 70%;">
+                        <div class="node-content">
+                            <h4>Applications</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-node" style="top: 70%; left: 30%;">
+                        <div class="node-content">
+                            <h4>Regulation</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-node" style="top: 70%; left: 70%;">
+                        <div class="node-content">
+                            <h4>Research</h4>
+                        </div>
+                    </div>
+                    
+                    <!-- Connector lines would be drawn with JavaScript -->
+                </div>
+                
+                <div class="topic-stories glassmorphism">
+                    <h3 id="topic-title">Artificial Intelligence</h3>
+                    <div class="story-list" id="topic-story-list">
+                        <div class="story-item">
+                            <h4>EU Passes AI Regulation Act</h4>
+                            <p class="story-source">Politico Europe · 3 hours ago</p>
+                        </div>
+                        <div class="story-item">
+                            <h4>Google's New AI Model Outperforms Humans on Creative Tasks</h4>
+                            <p class="story-source">TechCrunch · 5 hours ago</p>
+                        </div>
+                        <div class="story-item">
+                            <h4>AI Ethics Panel Calls for Transparency in Algorithmic Decision-Making</h4>
+                            <p class="story-source">Wired · 7 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Debate Zone Section -->
+        <section id="debate" class="debate-section">
+            <div class="section-header">
+                <h2>Debate Zone</h2>
+                <p>Engage in structured discussions</p>
+            </div>
+            
+            <div class="debate-container">
+                <div class="debate-topic glassmorphism">
+                    <div class="debate-header">
+                        <h3>Should AI development be paused for safety regulations to catch up?</h3>
+                        <div class="debate-stats">
+                            <span class="for">65% For</span>
+                            <div class="debate-meter">
+                                <div class="meter-fill" style="width: 65%;"></div>
+                            </div>
+                            <span class="against">35% Against</span>
+                        </div>
+                    </div>
+                    
+                    <div class="debate-sides">
+                        <div class="side for-side">
+                            <h4>Arguments For</h4>
+                            <div class="argument">
+                                <div class="user-info">
+                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User">
+                                    <span>Dr. Emily Zhang, AI Safety Researcher</span>
+                                </div>
+                                <p>"The rapid pace of AI development outstrips our ability to understand potential risks. A pause would allow for proper safety protocols to be established."</p>
+                                <div class="argument-actions">
+                                    <button class="vote-button"><i class="fas fa-arrow-up"></i> 142</button>
+                                    <button class="reply-button">Reply</button>
+                                </div>
+                            </div>
+                            
+                            <div class="argument">
+                                <div class="user-info">
+                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User">
+                                    <span>Marcus Johnson, Tech Ethicist</span>
+                                </div>
+                                <p>"History shows that technology without proper safeguards can have disastrous consequences. We learned this with social media - let's not repeat the mistake."</p>
+                                <div class="argument-actions">
+                                    <button class="vote-button"><i class="fas fa-arrow-up"></i> 98</button>
+                                    <button class="reply-button">Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="side against-side">
+                            <h4>Arguments Against</h4>
+                            <div class="argument">
+                                <div class="user-info">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="User">
+                                    <span>David Chen, AI Startup Founder</span>
+                                </div>
+                                <p>"A pause would only benefit large corporations who can afford to wait, while stifling innovation from smaller players. Regulation should evolve alongside technology."</p>
+                                <div class="argument-actions">
+                                    <button class="vote-button"><i class="fas fa-arrow-up"></i> 87</button>
+                                    <button class="reply-button">Reply</button>
+                                </div>
+                            </div>
+                            
+                            <div class="argument">
+                                <div class="user-info">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User">
+                                    <span>Priya Patel, Computer Science Professor</span>
+                                </div>
+                                <p>"The potential benefits in medicine, climate science, and education are too significant to delay. Responsible development doesn't require a full pause."</p>
+                                <div class="argument-actions">
+                                    <button class="vote-button"><i class="fas fa-arrow-up"></i> 76</button>
+                                    <button class="reply-button">Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="add-argument">
+                        <h4>Add Your Perspective</h4>
+                        <div class="argument-form">
+                            <select id="argument-side">
+                                <option value="for">For</option>
+                                <option value="against">Against</option>
+                            </select>
+                            <textarea placeholder="Write your argument..."></textarea>
+                            <button class="primary-button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Rewards Section -->
+        <section class="rewards-section">
+            <div class="section-header">
+                <h2>Your News Engagement</h2>
+                <p>Earn badges and rewards for participating</p>
+            </div>
+            
+            <div class="rewards-container glassmorphism">
+                <div class="user-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">247</div>
+                        <div class="stat-label">Articles Read</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">42</div>
+                        <div class="stat-label">Comments</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Debates Joined</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Badges</div>
+                    </div>
+                </div>
+                
+                <div class="badges-container">
+                    <h3>Your Badges</h3>
+                    <div class="badges-grid">
+                        <div class="badge earned">
+                            <div class="badge-icon"><i class="fas fa-book-reader"></i></div>
+                            <div class="badge-name">Avid Reader</div>
+                        </div>
+                        <div class="badge earned">
+                            <div class="badge-icon"><i class="fas fa-comment-dots"></i></div>
+                            <div class="badge-name">Commentator</div>
+                        </div>
+                        <div class="badge earned">
+                            <div class="badge-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="badge-name">Insightful</div>
+                        </div>
+                        <div class="badge earned">
+                            <div class="badge-icon"><i class="fas fa-globe"></i></div>
+                            <div class="badge-name">Worldly</div>
+                        </div>
+                        <div class="badge earned">
+                            <div class="badge-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="badge-name">Early Adopter</div>
+                        </div>
+                        <div class="badge">
+                            <div class="badge-icon"><i class="fas fa-gem"></i></div>
+                            <div class="badge-name">Debate Champion</div>
+                        </div>
+                        <div class="badge">
+                            <div class="badge-icon"><i class="fas fa-star"></i></div>
+                            <div class="badge-name">Top Contributor</div>
+                        </div>
+                        <div class="badge">
+                            <div class="badge-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="badge-name">News Expert</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- News Assistant Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <h3>News Assistant</h3>
+            <button id="minimize-chatbot"><i class="fas fa-minus"></i></button>
+            <button id="close-chatbot"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    <p>Hi there! I'm your STOIC News assistant. How can I help you today? Try asking:</p>
+                    <ul>
+                        <li>"What's the latest on climate change?"</li>
+                        <li>"Summarize today's top tech news"</li>
+                        <li>"Find me analysis on the upcoming elections"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Ask me anything about the news...">
+            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+            <button id="voice-input"><i class="fas fa-microphone"></i></button>
+        </div>
+    </div>
+    
+    <button id="open-chatbot" class="chatbot-toggle">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="glassmorphism">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-icon">N</span>
+                    <span class="logo-text">EXUS</span>
+                </div>
+                <p>The future of intelligent, interactive journalism</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4>Explore</h4>
+                    <a href="#">Topics</a>
+                    <a href="#">Map Explorer</a>
+                    <a href="#">Timeline View</a>
+                    <a href="#">Debate Zone</a>
+                </div>
+                
+                <div class="link-column">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Ethics Policy</a>
+                    <a href="#">Contact</a>
+                </div>
+                
+                <div class="link-column">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">GDPR</a>
+                </div>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to our daily intelligence briefing</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button class="primary-button">Subscribe</button>
+                </div>
+                <div class="app-badges">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 STOIC News. All rights reserved.</p>
+            <div class="footer-meta">
+                <span>Blockchain-verified credibility score: 98/100</span>
+                <span>Data last updated: Just now</span>
+                <a href="#" id="text-only-toggle">Text-only version</a>
+                <a href="#" id="offline-toggle">Offline mode</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Customization Modal (hidden by default) -->
+    <div id="customization-modal" class="modal">
+        <div class="modal-content glassmorphism">
+            <button id="close-modal" class="close-modal"><i class="fas fa-times"></i></button>
+            <h2>Customize Your News Experience</h2>
+            
+            <div class="modal-tabs">
+                <button class="tab-button active" data-tab="topics">Topics</button>
+                <button class="tab-button" data-tab="appearance">Appearance</button>
+                <button class="tab-button" data-tab="notifications">Notifications</button>
+            </div>
+            
+            <div class="tab-content active" id="topics-tab">
+                <h3>Select Your Interests</h3>
+                <p>Choose the topics you want to see more of in your feed</p>
+                
+                <div class="interest-grid">
+                    <div class="interest-item">
+                        <input type="checkbox" id="tech-interest" checked>
+                        <label for="tech-interest">Technology</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="science-interest" checked>
+                        <label for="science-interest">Science</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="politics-interest">
+                        <label for="politics-interest">Politics</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="business-interest">
+                        <label for="business-interest">Business</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="health-interest" checked>
+                        <label for="health-interest">Health</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="entertainment-interest">
+                        <label for="entertainment-interest">Entertainment</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="sports-interest">
+                        <label for="sports-interest">Sports</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="environment-interest" checked>
+                        <label for="environment-interest">Environment</label>
+                    </div>
+                </div>
+                
+                <div class="advanced-preferences">
+                    <h4>Advanced Preferences</h4>
+                    <div class="preference-item">
+                        <label for="ai-strength">AI Curation Strength</label>
+                        <input type="range" id="ai-strength" min="0" max="100" value="70">
+                        <div class="range-labels">
+                            <span>More Diverse</span>
+                            <span>More Personalized</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="appearance-tab">
+                <h3>Appearance Settings</h3>
+                
+                <div class="appearance-options">
+                    <div class="option-group">
+                        <h4>Color Theme</h4>
+                        <div class="color-themes">
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-preview dark"></div>
+                                <span>Dark</span>
+                            </div>
+                            <div class="theme-option" data-theme="light">
+                                <div class="theme-preview light"></div>
+                                <span>Light</span>
+                            </div>
+                            <div class="theme-option" data-theme="blue">
+                                <div class="theme-preview blue"></div>
+                                <span>Ocean</span>
+                            </div>
+                            <div class="theme-option" data-theme="green">
+                                <div class="theme-preview green"></div>
+                                <span>Forest</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h4>Accent Color</h4>
+                        <div class="color-picker">
+                            <input type="color" id="accent-color" value="#4a6bdf">
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h4>Layout Density</h4>
+                        <select id="layout-density">
+                            <option value="compact">Compact</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="spacious">Spacious</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="notifications-tab">
+                <h3>Notification Preferences</h3>
+                
+                <div class="notification-options">
+                    <div class="option-item">
+                        <input type="checkbox" id="breaking-news" checked>
+                        <label for="breaking-news">Breaking News Alerts</label>
+                    </div>
+                    
+                    <div class="option-item">
+                        <input type="checkbox" id="topic-alerts" checked>
+                        <label for="topic-alerts">Updates on Followed Topics</label>
+                    </div>
+                    
+                    <div class="option-item">
+                        <input type="checkbox" id="debate-updates">
+                        <label for="debate-updates">Debate Activity</label>
+                    </div>
+                    
+                    <div class="option-item">
+                        <input type="checkbox" id="daily-briefing" checked>
+                        <label for="daily-briefing">Daily Morning Briefing</label>
+                    </div>
+                    
+                    <div class="option-item">
+                        <input type="checkbox" id="weekly-digest">
+                        <label for="weekly-digest">Weekly Digest</label>
+                    </div>
+                </div>
+                
+                <div class="notification-frequency">
+                    <h4>Notification Frequency</h4>
+                    <select id="frequency-select">
+                        <option value="real-time">Real-time for important news</option>
+                        <option value="hourly" selected>Hourly digest</option>
+                        <option value="twice-daily">Twice daily</option>
+                        <option value="daily">Daily summary</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="secondary-button" id="reset-preferences">Reset to Defaults</button>
+                <button class="primary-button" id="save-preferences">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player (hidden by default) -->
+    <div id="audio-player" class="audio-player glassmorphism">
+        <div class="player-controls">
+            <button id="play-pause"><i class="fas fa-play"></i></button>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="time-display">
+                    <span id="current-time">0:00</span> / <span id="total-time">2:30</span>
+                </div>
+            </div>
+            <button id="close-player"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="player-info">
+            <h4 id="player-title">Quantum Computers Break Encryption Barrier</h4>
+            <p id="player-source">MIT News · 2 min listen</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
